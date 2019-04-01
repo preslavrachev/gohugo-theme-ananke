@@ -19,9 +19,17 @@
             {{ end }}
             </a>
         </h1>
-        <span class="db mb3 f6-l">
-          Preslav Rachev in {{ delimit .Params.tags ", " }} | {{- .Date.Format " 2 Jan, 2006" -}}
-        </span>
+        {{ if ne true (in .Params.tags "micropost")}}
+          <span class="db mb3 f6-l">
+            Preslav Rachev in {{ delimit .Params.tags ", " }} | {{- .Date.Format " 2 Jan, 2006" -}}
+          </span>
+        {{ else }}
+          <span class="mb3 f3 mid-gray fw3">
+            <a href="{{.URL}}" class="color-inherit dim link">
+                🗒 {{- .Date.Format " 2 Jan, 2006" -}}
+            </a>
+          </span>
+        {{ end }}
         <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
           {{ if ne true (in .Params.tags "micropost")}}
             {{ .Summary }}
