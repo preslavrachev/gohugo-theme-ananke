@@ -44,6 +44,8 @@
     {{ if eq (getenv "HUGO_ENV") "production" | or (eq .Site.Params.env "production")  }}
       {{ template "_internal/google_analytics_async.html" . }}
     {{ end }}
+
+    {{ partial "custom-header.html" . }}
   </head>
 
   <body class="ma0 {{ $.Param "body_classes"  | default "avenir bg-white"}}{{ with getenv "HUGO_ENV" }} {{ . }}{{ end }}">
@@ -54,5 +56,7 @@
     </main>
     {{ block "footer" . }}{{ partialCached "site-footer.html" . }}{{ end }}
     {{ block "scripts" . }}{{ partialCached "site-scripts.html" . }}{{ end }}
+
+    {{ partial "custom-footer.html" . }}
   </body>
 </html>
