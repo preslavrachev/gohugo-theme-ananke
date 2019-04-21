@@ -30,7 +30,7 @@
         */}}
       {{ if (or (eq (.Param "show_reading_time") true) (eq $section.Params.show_reading_time true) )}}
         <span class="f6 mv4 dib tracked"> - {{ .ReadingTime}} minutes read</span>
-        <span class="f6 mv4 dib tracked"> - {{ .WordCount}} words</span>
+        <span class="f6 mv4 dib tracked"> - <a href="#disqus_thread">Comments</a></span>
       {{ end }}
     </header>
 
