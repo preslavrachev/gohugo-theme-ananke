@@ -3,38 +3,41 @@
   <div class="db pv4 ph3 ph0-l no-underline dark-gray">
     <div class="flex flex-column flex-row-ns">
       {{ if .Params.featured_image }}
-          {{/* Trimming the slash and adding absURL make sure the image works no matter where our site lives */}}
-        {{ $featured_image := (trim $featured_image "/") | absURL }}
-        <div class="pr3-ns mb4 mb0-ns w-100 w-30-ns">
-          <a href="{{.URL}}" class="db grow">
-            <img src="{{ $featured_image }}" class="img" alt="image from {{ .Title }}">
-          </a>
-        </div>
+      {{/* Trimming the slash and adding absURL make sure the image works no matter where our site lives */}}
+      {{ $featured_image := (trim $featured_image "/") | absURL }}
+      <div class="pr3-ns mb4 mb0-ns w-100 w-30-ns">
+        <a href="{{.URL}}" class="db grow">
+          <img src="{{ $featured_image }}" class="img"
+            alt="image from {{ .Title }}">
+        </a>
+      </div>
       {{ end }}
-      <div class="blah w-100{{ if .Params.featured_image }} w-70-ns pl3-ns{{ end }}">
+      <div
+        class="blah w-100{{ if .Params.featured_image }} w-70-ns pl3-ns{{ end }}">
         <h1 class="f2 mt0 mb0 lh-title">
           <a href="{{.URL}}" class="color-inherit dim link">
             {{ if ne true (in .Params.tags "micropost")}}
-              {{ .Title }}
+            {{ .Title }}
             {{ end }}
-            </a>
+          </a>
         </h1>
         {{ if ne true (in .Params.tags "micropost")}}
-          <span class="db mb3 f6-l">
-            Preslav Rachev in {{ delimit .Params.tags ", " }} | {{- .Date.Format " 2 Jan, 2006" -}}
-          </span>
+        <span class="db mb3 f6-l">
+          Preslav Rachev in {{ delimit .Params.tags ", " }} |
+          {{- .Date.Format " 2 Jan, 2006" -}}
+        </span>
         {{ else }}
-          <span class="mb3 f3 mid-gray fw3">
-            <a href="{{.URL}}" class="color-inherit dim link">
-                🗒 {{- .Date.Format " 2 Jan, 2006" -}}
-            </a>
-          </span>
+        <span class="mb3 f3">
+          <a href="{{.URL}}" class="color-inherit dim link">
+            🗒 {{- .Date.Format " 2 Jan, 2006" -}}
+          </a>
+        </span>
         {{ end }}
         <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
           {{ if ne true (in .Params.tags "micropost")}}
-            {{ .Summary }}
+          {{ .Summary }}
           {{ else }}
-            {{ .Content }}
+          {{ .Content }}
           {{ end }}
         </div>
       </div>
